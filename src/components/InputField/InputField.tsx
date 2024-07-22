@@ -7,6 +7,6 @@ const InputField = ({text, handleInput, handleSubmit}) => {
         <button className="add-button" onClick={handleSubmit}>Add Todo</button>
       </label>
   )
-}
+};
 
 export default InputField

@@ -1,9 +1,9 @@
 .todo-item {
     display: flex;
     align-items: center;
-    background-color:rgb(151, 246, 83);
+    background-color: rgb(151, 246, 83);
     padding: 10px;
-    justify-content:space-between;
+    justify-content: space-between;
     border-radius: 8px;
 }
 
@@ -14,25 +14,28 @@
 .checkbox {
     width: 18px;
     height: 18px;
+}
 
+.button-block {
+    display: flex;
 }
 
 .button-edit {
     display: flex;
     border: none;
     outline: none;
-  cursor: pointer;
-  background-color:rgb(151, 246, 83);
+    cursor: pointer;
+    background-color: rgb(151, 246, 83);
+    font-weight: bold;
+    color: rgba(11, 50, 29, 0.575);
 }
 
 .button-delete {
     display: flex;
     border: none;
     outline: none;
-  cursor: pointer;
-  background-color:rgb(151, 246, 83);
-  
+    cursor: pointer;
+    background-color: rgb(151, 246, 83);
+    color: red;
+    font-weight: bold;
 }
-
-
-

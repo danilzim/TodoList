@@ -5,6 +5,7 @@ import { addTodo } from "./store/todoSlice";
 
 import TodoList from "./components/TodoList/TodoList";
 import InputField from "./components/InputField/InputField";
+import Select from "./components/Select/Select";
 
 import "./App.css";
 
@@ -17,10 +18,10 @@ function App() {
     setText("");
   };
 
-
   return (
     <div className="App">
       <div className="todo-wrapper">
+        <Select />
         <InputField text={text} handleInput={setText} handleSubmit={addTask} />
         <TodoList />
       </div>

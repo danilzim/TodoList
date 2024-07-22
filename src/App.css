@@ -27,6 +27,12 @@ li {
   text-decoration: line-through;
 }
 
+.empty-todo {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  font-weight: bold;
+}
 
 .todo-wrapper {
   display: flex; 

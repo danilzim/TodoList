@@ -3,7 +3,8 @@ import {createSlice} from '@reduxjs/toolkit';
 const todoSlice = createSlice({
     name: 'todos',
     initialState: {
-        todos: []
+        todos: [],
+        sortOption: "All",
     },
     reducers: {
         addTodo(state, action) {
@@ -20,7 +21,6 @@ const todoSlice = createSlice({
             const toggledTodo = state.todos.find(todo => todo.id === action.payload.id);
             toggledTodo.completed = !toggledTodo.completed;
         },
-
         editTodo(state, action) {
             const {id, text} = action.payload;
             const newTodos = state.todos.map(todo => {
@@ -36,11 +36,11 @@ const todoSlice = createSlice({
             })
             state.todos = newTodos;
         },
-        
-        
+        sortTodo(state, action) {
+            state.sortOption = action.payload;
+        } 
     },
 });
 
-
-export const {addTodo, removeTodo, toggleTodoComplete, editTodo} = todoSlice.actions;
+export const {addTodo, removeTodo, toggleTodoComplete, editTodo, sortTodo} = todoSlice.actions;
 export default todoSlice.reducer;
