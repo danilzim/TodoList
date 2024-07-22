@@ -1,0 +1,41 @@
+.App {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  flex-direction: column;
+  background-color:rgb(151, 246, 83);
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+.checkbox {
+  cursor: pointer;
+}
+
+.checkbox:checked + span {
+  text-decoration: line-through;
+}
+
+
+.todo-wrapper {
+  display: flex; 
+  flex-direction: column;
+  padding: 50px;
+  min-width: 500px;
+  border: 1px solid green;
+  border-radius: 20px;
+  background-color: rgba(13, 82, 16, 0.37);
+}
+
+

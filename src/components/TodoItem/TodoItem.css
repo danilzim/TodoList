@@ -1,0 +1,30 @@
+.todo-item {
+    display: flex;
+    align-items: center;
+    background-color:rgb(151, 246, 83);
+    padding: 10px;
+    justify-content:space-between;
+    border-radius: 8px;
+}
+
+.task {
+    font-size: 20px;
+}
+
+.checkbox {
+    width: 18px;
+    height: 18px;
+
+}
+
+.button-delete {
+    display: flex;
+    width: 22px;
+    height: 20px;
+    border: none;
+    outline: none;
+  cursor: pointer;
+  background-color:rgb(151, 246, 83);
+  
+}
+
