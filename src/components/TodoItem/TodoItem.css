@@ -17,14 +17,22 @@
 
 }
 
+.button-edit {
+    display: flex;
+    border: none;
+    outline: none;
+  cursor: pointer;
+  background-color:rgb(151, 246, 83);
+}
+
 .button-delete {
     display: flex;
-    width: 22px;
-    height: 20px;
     border: none;
     outline: none;
   cursor: pointer;
   background-color:rgb(151, 246, 83);
   
 }
+
+
 

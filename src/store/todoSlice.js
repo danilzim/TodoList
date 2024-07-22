@@ -11,7 +11,6 @@ const todoSlice = createSlice({
                 id: new Date().toISOString(),
                 text: action.payload.text,
                 completed: false,
-                isEditing: false,
             })
         },
         removeTodo(state, action) {
@@ -22,24 +21,26 @@ const todoSlice = createSlice({
             toggledTodo.completed = !toggledTodo.completed;
         },
 
-        //  editTodo(state, action) => {
-        //     setTodos(
-        //       todos.map((todo) =>
-        //         todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
-        //       )
-        //     );
-        //   },
+        editTodo(state, action) {
+            const {id, text} = action.payload;
+            const newTodos = state.todos.map(todo => {
+                const todoId = todo.id;
+                if (todoId === id) {
+                    return {
+                        id: todoId,
+                        text: text,
+                        completed: todo.completed,
+                    }
+                } 
+                return todo;
+            })
+            state.todos = newTodos;
+        },
         
-        //  editTask(state, action) => {
-        //     setTodos(
-        //       todos.map((todo) =>
-        //         todo.id === id ? { ...todo, task, isEditing: !todo.isEditing } : todo
-        //       )
-        //     );
-        //   },
+        
     },
 });
 
 
-export const {addTodo, removeTodo, toggleTodoComplete} = todoSlice.actions;
+export const {addTodo, removeTodo, toggleTodoComplete, editTodo} = todoSlice.actions;
 export default todoSlice.reducer;

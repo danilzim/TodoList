@@ -1,21 +1,61 @@
-import {useDispatch} from 'react-redux';
-import {removeTodo, toggleTodoComplete} from '../../store/todoSlice';
+import { useState } from "react";
 
-import './TodoItem.css';
+import { useDispatch } from "react-redux";
+import {
+  removeTodo,
+  toggleTodoComplete,
+  editTodo,
+} from "../../store/todoSlice";
 
-const TodoItem = ({id, text, completed}) => {
+import "./TodoItem.css";
+
+const TodoItem = ({ id, text, completed }) => {
+  const [isEdit, setIsEdit] = useState(false);
+  const [newText, setNewText] = useState(text);
   const dispatch = useDispatch();
- 
+
+  const handleClickSave = () => {
+    dispatch(editTodo({ id, text: newText, completed }));
+    setIsEdit(false);
+  };
+
+  const handleChangeNewText = () => {
+    setIsEdit(true);
+  };
+
+  const handleSetNewText = (e) => {
+    setNewText(e.target.value);
+  };
+
   return (
     <li className="todo-item">
-      <input className="checkbox" type="checkbox" checked={completed} onChange={() => dispatch(toggleTodoComplete({id}))}/>
-            <span className="task">{text}</span>
-            <button className="button-delete" onClick={() => dispatch(removeTodo({id}))} ><img src="./edit.svg">
-            </img></button>
-            <button className="button-delete" onClick={() => dispatch(removeTodo({id}))} ><img src="./close.svg">
-            </img></button>
+      <input
+        className="checkbox"
+        type="checkbox"
+        checked={completed}
+        onChange={() => dispatch(toggleTodoComplete({ id }))}
+      />
+      {!isEdit && <span className="task">{text}</span>}
+      {isEdit && <input value={newText} onChange={handleSetNewText} />}
+      {!isEdit && (
+       <button className="button-edit" onClick={handleChangeNewText}>
+       Edit
+     </button>
+        
+      )}
+      {isEdit && (
+        <button className="button-delete" onClick={handleClickSave}>
+          Save
+        </button>
+      )}
+      <button
+        className="button-delete"
+        onClick={() => dispatch(removeTodo({ id }))}
+      >
+        Delete
+      </button>
     </li>
-  )
-}
+  );
+};
 
 export default TodoItem;
