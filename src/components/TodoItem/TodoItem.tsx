@@ -1,11 +1,7 @@
 import { useState } from "react";
 
 import { useAppDispatch } from "../../hook";
-import {
-  removeTodo,
-  toggleTodoComplete,
-  editTodo,
-} from "../../store/todoSlice";
+import { removeTodo, toggleTodoComplete, editTodo } from "../../store/todoSlice";
 
 import "./TodoItem.css";
 
