@@ -1,11 +1,11 @@
 import TodoItem from "../TodoItem/TodoItem";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../hook";
 
 import "./TodoList.css";
 
-const TodoList = () => {
-  const todos = useSelector((state) => state.todos.todos);
-  const sortOption = useSelector((state) => state.todos.sortOption);
+const TodoList: React.FC = () => {
+  const todos = useAppSelector((state) => state.todos.todos);
+  const sortOption = useAppSelector((state) => state.todos.sortOption);
 
   const sortTodoList = todos.filter((todo) => {
     if (sortOption === "All") return true;

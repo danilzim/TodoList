@@ -1,12 +1,12 @@
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../hook";
 import { sortTodo } from "../../store/todoSlice";
 
 import "./Select.css";
 
-const Select = () => {
-  const dispatch = useDispatch();
+const Select: React.FC = () => {
+  const dispatch = useAppDispatch();
 
-  const handleSort = (sortOption) => {
+  const handleSort = (sortOption:string) => {
     dispatch(sortTodo(sortOption));
   };
 

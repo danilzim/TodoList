@@ -1,14 +1,24 @@
 import { useState } from "react";
 
-import { useDispatch } from "react-redux";
-import { removeTodo, toggleTodoComplete, editTodo } from "../../store/todoSlice";
+import { useAppDispatch } from "../../hook";
+import {
+  removeTodo,
+  toggleTodoComplete,
+  editTodo,
+} from "../../store/todoSlice";
 
 import "./TodoItem.css";
 
-const TodoItem = ({ id, text, completed }) => {
+interface TodoItemProps {
+  id: string;
+  text: string;
+  completed: boolean;
+}
+
+const TodoItem: React.FC<TodoItemProps> = ({ id, text, completed }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [newText, setNewText] = useState(text);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleClickSave = () => {
     dispatch(editTodo({ id, text: newText, completed }));
@@ -19,7 +29,7 @@ const TodoItem = ({ id, text, completed }) => {
     setIsEdit(true);
   };
 
-  const handleSetNewText = (e) => {
+  const handleSetNewText: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setNewText(e.target.value);
   };
 
@@ -29,7 +39,7 @@ const TodoItem = ({ id, text, completed }) => {
         className="checkbox"
         type="checkbox"
         checked={completed}
-        onChange={() => dispatch(toggleTodoComplete({ id }))}
+        onChange={() => dispatch(toggleTodoComplete(id))}
       />
       {!isEdit && <span className="task">{text}</span>}
       {isEdit && <input value={newText} onChange={handleSetNewText} />}
@@ -46,7 +56,7 @@ const TodoItem = ({ id, text, completed }) => {
         )}
         <button
           className="button-delete"
-          onClick={() => dispatch(removeTodo({ id }))}
+          onClick={() => dispatch(removeTodo(id))}
         >
           Delete
         </button>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "./hook";
 
 import { addTodo } from "./store/todoSlice";
 
@@ -11,10 +11,10 @@ import "./App.css";
 
 function App() {
   const [text, setText] = useState("");
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const addTask = () => {
-    dispatch(addTodo({ text }));
+    dispatch(addTodo(text));
     setText("");
   };
 
